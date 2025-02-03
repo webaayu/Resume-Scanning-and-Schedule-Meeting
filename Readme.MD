@@ -1,46 +1,48 @@
-# Step-by-Step Guide to Create `credentials.json`
+# Step-by-Step Guide to Create `credentials.json` for a Desktop Application
 
-### 1. Go to the Google Cloud Console
-- Open your browser and go to [Google Cloud Console](https://console.cloud.google.com/).
-- If you don’t have a Google Cloud account, you may need to create one.
+## 1. Access the Google Cloud Console
+- Open your browser and navigate to the [Google Cloud Console](https://console.cloud.google.com/).
+- If you don’t have a Google Cloud account, you'll need to create one.
 
-### 2. Create a New Project
-- In the top-left corner, click on the project dropdown.
-- Click on **"New Project"**.
-- Name your project (e.g., "Job Interview Scheduler").
+## 2. Create a New Project
+- In the top-left corner, click on the project dropdown menu.
+- Select **"New Project"**.
+- Provide a name for your project (e.g., "Job Interview Scheduler").
 - Click **Create**.
 
-### 3. Enable Gmail and Calendar APIs
-- In the Google Cloud Console, go to the **API & Services** section (left sidebar).
+## 3. Enable Gmail and Calendar APIs
+- In the Google Cloud Console, navigate to the **API & Services** section via the left sidebar.
 - Click on **"Library"**.
-- In the search bar, type:
-  - **Gmail API** → Click on it and then click **Enable**.
-  - **Google Calendar API** → Click on it and then click **Enable**.
+- Use the search function to locate and enable the following APIs:
+  - **Gmail API**:
+    - Click on it and then select **Enable**.
+  - **Google Calendar API**:
+    - Click on it and then select **Enable**.
 
-### 4. Create OAuth 2.0 Credentials
-- After enabling the APIs, go to **"Credentials"** in the **API & Services** section.
-- Click on **"Create Credentials"** at the top and select **OAuth 2.0 Client IDs**.
+## 4. Configure the OAuth Consent Screen
+- Navigate to the **"OAuth consent screen"** under the **API & Services** section.
+- Choose the **User Type**:
+  - **External**: For applications intended for users outside your organization.
+- Click **Create**.
+- Fill out the required fields:
+  - **App Name**: Enter a name for your application (e.g., "Job Interview Scheduler").
+  - **User Support Email**: Provide your email address.
+- Click **Save and Continue**.
 
-### 5. Configure OAuth Consent Screen
-- You will be prompted to configure the OAuth consent screen:
-  - **User Type**: Choose **External** (for applications that will be used outside your organization).
-  - **App Name**: Enter a name (e.g., "Job Interview Scheduler").
-  - **User Support Email**: Enter your email address.
-  - **Scopes**: For now, you can leave it as default (we’ll add scopes later in the code).
-  - **Test Users**: You can add your email as a test user.
-  - Click **Save and Continue**.
+## 5. Create OAuth Credentials for a Desktop Application
+- After configuring the consent screen, go to the **"Credentials"** tab under **API & Services**.
+- Click on **"Create Credentials"** and select **OAuth client ID**.
+- For **Application Type**, choose **Desktop app**.
+- Provide a name for the client (e.g., "Desktop Client for Scheduler").
+- Click **Create**.
 
-#### Create OAuth CredentialsDesktop Application OAuth Setup:
+## 6. Download the `credentials.json` File
+- After creating the credentials, a dialog will display your **Client ID** and **Client Secret**.
+- Click the **Download JSON** button to save the `credentials.json` file to your computer.
 
-###### 1. **Create OAuth Credentials:**
-- For **Application Type**, select **Desktop app** instead of **Web application**.
-- You **do not need to add an Authorized Redirect URI** manually like you do for a web app.
+## 7. Integrate the Credentials into Your Application
+- Move the downloaded `credentials.json` file to the directory where your Python script resides.
+- Ensure that your Python script references this file when setting up authentication with Google APIs.
 
-###### 2. **Download the Credentials:**
-- After setting the application type to **Desktop app**, click **Create**.
-- You will see the **OAuth 2.0 Client ID** and the **Client Secret**.
-- Click **Download** to save the `credentials.json` file to your computer.
-
-###### 3. **Using the OAuth Credentials in the Code:**
-- The `credentials.json` file will contain the necessary credentials to authenticate and interact with Google APIs (Gmail and Calendar in your case).
+By following these steps, you'll have a `credentials.json` file configured for your desktop application, enabling it to authenticate and interact with Google APIs such as Gmail and Calendar.
 
