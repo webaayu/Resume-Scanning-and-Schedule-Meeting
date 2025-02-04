@@ -70,7 +70,7 @@ def schedule_interview(candidate_name, email, job_title):
 def find_best_match(resume_text):
     """Finds the best job match using FAISS similarity search."""
     resume_embedding = embedding_model.encode([resume_text]).astype(np.float32)
-    _, index_result = index.search(resume_embedding, 1)  # Get top match
+    index_result = index.search(resume_embedding, 1)[1]  # Only take the second return value
     best_match = job_titles[index_result[0][0]]
     return best_match
 
